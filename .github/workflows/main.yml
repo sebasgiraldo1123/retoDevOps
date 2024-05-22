@@ -9,13 +9,23 @@ on:
 
 jobs:
   build:
-    runs-on: windows
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    
     steps: 
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
     - name: Revisar repositorio
-      run: echo test devOps
+      run: echo "Test DevOps"
 
     - name: Analizar repositorio
-      run: se analiza el repositorio
+      run: |
+        if [ "${{ runner.os }}" = "Windows" ]; then
+          dir
+        else
+          ls -la
+        fi
 
-ls -la
