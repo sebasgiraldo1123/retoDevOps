@@ -1,0 +1,21 @@
+name: first pipeline
+
+on:
+  pull_request:
+    branches: ["main"]
+
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: windows
+
+    steps: 
+    - name: Revisar repositorio
+      run: echo test devOps
+
+    - name: Analizar repositorio
+      run: se analiza el repositorio
+
+ls -la
