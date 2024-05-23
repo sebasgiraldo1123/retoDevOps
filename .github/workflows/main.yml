@@ -3,16 +3,12 @@ name: first pipeline
 on:
   pull_request:
     branches: ["main"]
-
   push:
     branches: ["main"]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest]
+    runs-on: ubuntu-latest
     
     steps: 
     - name: Checkout repository
@@ -22,10 +18,4 @@ jobs:
       run: echo "Test DevOps"
 
     - name: Analizar repositorio
-      run: |
-        if [ "${{ runner.os }}" = "Windows" ]; then
-          dir
-        else
-          ls -la
-        fi
-
+      run: ls -la
